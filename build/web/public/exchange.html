@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exchange html</title>
+    <!-- import Material UI stylesheets -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+    <style>
+        p {
+          text-align: center;
+        }
+        body {
+            text-align: center;
+        }
+        .input-field{
+            display: flex;
+            justify-content: center;
+            padding-left: 35%;
+            padding-right: 35%;
+        }
+        
+        label {
+            padding-left: 35%;
+        }
+      </style>
+  </head>
+  <body>
+    <h1>you are on the right side</h1>
+    <div>
+      <!-- use Material UI Button component -->
+      <button class="waves-effect waves-light btn" onclick="loadToken()">
+        generate your accessToken
+      </button>
+    </div>
+    <div class="input-field col s12">
+      <label for="clientId">clientId</label>
+      <!-- use Material UI Input component -->
+      <input type="text" name="clientId" id="clientId" class="validate" value="clientId">
+    </div>
+    <div class="input-field col s12">
+      <label for="clientSecret">clientSecret</label>
+      <!-- use Material UI Input component -->
+      <input type="text" name="clientSecret" id="clientSecret" class="validate" value="clientSecret">
+    </div>
+    <script>
+        let li = document.createElement("li")
+        const code = (new URLSearchParams(window.location.search)).get("code")
+        li.className = "collection-item";
+        li.innerText = "you token is:" + " "+ code
+
+        let ul = document.createElement("ul")
+        ul.className = "collection";
+        ul.appendChild(li)
+
+        document.getElementsByTagName("body")[0].appendChild(ul)
+
+      function loadToken() {
+        const clientId = document.getElementById("clientId").value;
+        const clientSecret = document.getElementById("clientSecret").value;
+
+        const data = { code, clientId, clientSecret };
+        fetch("/post", {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const button = document.createElement("button");
+            button.innerText = "Download all Data from Strava";
+            button.className = "waves-effect waves-light btn";
+            button.onclick = () =>
+              window.location.assign("http://localhost:8000/syncPage");
+
+            document.getElementsByTagName("body")[0].appendChild(button);
+
+            const dataList = document.createElement("ul");
+            dataList.className = "collection";
+            Object.entries(data).forEach(([key, value]) => {
+              const dataItem = document.createElement("li");
+              dataItem.className = "collection-item";
+              dataItem.innerText = `${key}: ${value}`;
+              dataList.appendChild(dataItem);
+            });
+            document.getElementsByTagName("body")[0].appendChild(dataList);
+          });
+      }
+    </script>
+    <!-- import Material UI scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>

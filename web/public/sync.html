@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+
+  <style>
+        #loader {
+    border: 16px solid #f3f3f3; 
+    border-top: 16px solid #3498db;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+
+    #titlePage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+    }
+
+    #loadItem {
+        align-self: center;
+    }
+
+  </style>
+
+    <title>Workout List</title>
+</head>
+<body>
+    <div id="titlePage">
+        <h1 >Sync Status Page</h1>
+        <div id="loadItem">
+
+        </div>
+    </div>
+    <table id="metaTable"></table>
+    <script>
+        let loadItem = document.createElement("div")
+        loadItem.setAttribute("id", "loader")
+        document.getElementById("loadItem").appendChild(loadItem)
+
+
+        const eventSource = new EventSource("/activitiesStream");
+
+        const head = ["ID", "Date", "Type", "Time", "Distance", "Speed", "Heart-Rate", "Page", "GPS-Entries"]
+        const header = document.createElement("tr")
+        document.getElementById("metaTable").appendChild(header)
+        head.forEach ((ele) => {
+            const cel = document.createElement("th")
+            cel.innerText = ele
+            header.appendChild(cel)
+        })
+
+
+     
+        let page = 1
+
+        eventSource.addEventListener("activity", event => {
+            jsonEvent = JSON.parse(event.data)
+            const tr = document.createElement("tr")
+            document.getElementById("metaTable").appendChild(tr)
+            let listEle = head.map(ele => {
+                const td = document.createElement("td")
+                if (ele == "ID") {
+                    tr.id = jsonEvent.id
+                    td.innerText = jsonEvent.id
+                } else if (ele == "Date") {
+                    td.innerText = jsonEvent.start_date
+
+                } else if (ele == "Type") {
+                    td.innerText = jsonEvent.type
+
+                } else if (ele == "Time") {
+                    td.innerText = jsonEvent.elapsed_time
+
+                } else if (ele == "Distance") {
+                    td.innerText = jsonEvent.distance  / 1000
+
+                } else if (ele == "Speed") {
+                    td.innerText = jsonEvent.average_speed * 3.6
+
+                }  else if (ele == "Heart-Rate") {
+                    td.innerText = jsonEvent.average_heartrate
+
+                }  else if (ele == "Page") {
+                    td.innerText = jsonEvent.page
+
+                } else if (ele == "GPS-Entries") {
+                    td.id = "GPS"+jsonEvent.id
+                    td.innerText = "not sync yet"
+                } 
+                else {
+                    td.innerText = "No element found"
+                }
+                return td
+            })
+
+
+            listEle.forEach(ele => tr.appendChild(ele))
+            console.log(jsonEvent);
+            page ++
+        });
+
+        eventSource.addEventListener("workoutData", event => {
+            event = JSON.parse(event.data)
+            console.log(event);
+            const gpsEntrie = document.getElementById("GPS" + event.id)
+            gpsEntrie.innerText = event.entries
+        })
+
+
+        eventSource.addEventListener("end-of-stream", event => {
+            console.log("EVENT IS FINISHED");
+            loadItem.remove()
+            const finishedButton = document.createElement("button")
+            finishedButton.className = "waves-effect waves-light btn";
+            document.getElementById("loadItem").appendChild(finishedButton)
+            
+
+            finishedButton.innerText = "Go to the main page"
+            finishedButton.onclick = () => window.location.assign("http://localhost:8000/")
+
+            eventSource.close(); // Stop retry
+        });
+    </script>
+</body>
+</html>
