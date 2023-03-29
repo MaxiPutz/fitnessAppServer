@@ -31,11 +31,11 @@
       </style>
   </head>
   <body>
-    <h1>you are on the right side</h1>
+    <h1>Generate your Session Token</h1>
     <div>
       <!-- use Material UI Button component -->
       <button class="waves-effect waves-light btn" onclick="loadToken()">
-        generate your accessToken
+        click to generate your Session Token
       </button>
     </div>
     <div class="input-field col s12">
@@ -73,7 +73,7 @@
           .then((response) => response.json())
           .then((data) => {
             const button = document.createElement("button");
-            button.innerText = "Download all Data from fitnessApp";
+            button.innerText = "Download all Data from Strava";
             button.className = "waves-effect waves-light btn";
             button.onclick = () =>
               window.location.assign("http://localhost:8000/syncPage");
