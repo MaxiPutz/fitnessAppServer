@@ -41,7 +41,7 @@ func RunWeb() {
 		fmt.Printf("response: %v\n", response)
 	})
 
-	fmt.Println("Welcom to the fitnessApp \n if you downloaded your data you can use the folow link 'http://localhost:8000/' \n if you like download your data from strava you can use this link 'http://localhost:8080/init' \n if you have some issues you can send me a email to putzmaximilian@gmail.com")
+	fmt.Println("Welcome to the fitnessApp \n if you downloaded your data you can use the folow link 'http://localhost:8000/' \n If you downloaded your data, you can use the follow link  'http://localhost:8080/init' \n If you have any issues, you can email me to putzmaximilian@gmail.com")
 
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
