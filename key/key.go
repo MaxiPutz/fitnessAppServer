@@ -1,7 +1,7 @@
 package key
 
 import (
-	"strava/structs"
+	"fitnessApp/structs"
 	"sync"
 )
 

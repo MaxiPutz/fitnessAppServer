@@ -73,7 +73,7 @@
           .then((response) => response.json())
           .then((data) => {
             const button = document.createElement("button");
-            button.innerText = "Download all Data from Strava";
+            button.innerText = "Download all Data from fitnessApp";
             button.className = "waves-effect waves-light btn";
             button.onclick = () =>
               window.location.assign("http://localhost:8000/syncPage");

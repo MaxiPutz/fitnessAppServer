@@ -2,11 +2,11 @@ package gpx
 
 import (
 	"encoding/xml"
+	"fitnessApp/fn"
+	"fitnessApp/structs"
 	"fmt"
 	"io/fs"
 	"os"
-	"strava/fn"
-	"strava/structs"
 	"strings"
 )
 

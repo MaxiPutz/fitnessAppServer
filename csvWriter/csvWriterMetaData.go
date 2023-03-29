@@ -1,9 +1,9 @@
 package csvwriter
 
 import (
+	"fitnessApp/fn"
+	"fitnessApp/structs"
 	"os"
-	"strava/fn"
-	"strava/structs"
 	"strconv"
 	"strings"
 )

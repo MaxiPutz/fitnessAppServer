@@ -1,4 +1,4 @@
-module strava
+module fitnessApp
 
 go 1.18
 

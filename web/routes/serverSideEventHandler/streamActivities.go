@@ -2,10 +2,10 @@ package serversideeventhandler
 
 import (
 	"encoding/json"
+	"fitnessApp/api"
+	csvwriter "fitnessApp/csvWriter"
 	"fmt"
 	"net/http"
-	"strava/api"
-	csvwriter "strava/csvWriter"
 	"sync"
 )
 

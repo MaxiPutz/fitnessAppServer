@@ -2,11 +2,11 @@ package api
 
 import (
 	"encoding/json"
+	"fitnessApp/key"
+	"fitnessApp/structs"
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"strava/key"
-	"strava/structs"
 	"strconv"
 )
 
@@ -52,9 +52,9 @@ func GetLatestActivities() []structs.MetaData {
 }
 
 func getActivities(pageIndex int) []structs.MetaData {
-	stravaUrl := stravaAPIUrl + "/athlete/activities?unit_system=metric&page=" + strconv.Itoa(pageIndex)
-	fmt.Println(stravaUrl)
-	req, err := http.NewRequest("GET", stravaUrl, nil)
+	fitnessAppUrl := fitnessAppAPIUrl + "/athlete/activities?unit_system=metric&page=" + strconv.Itoa(pageIndex)
+	fmt.Println(fitnessAppUrl)
+	req, err := http.NewRequest("GET", fitnessAppUrl, nil)
 	if err != nil {
 		fmt.Println(err)
 		return []structs.MetaData{}

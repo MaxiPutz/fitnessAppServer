@@ -2,14 +2,14 @@ package web
 
 import (
 	"embed"
+	"fitnessApp/key"
+	pagehandler "fitnessApp/web/routes/pageHandler"
+	posthandler "fitnessApp/web/routes/postHandler"
+	serversideeventhandler "fitnessApp/web/routes/serverSideEventHandler"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
-	"strava/key"
-	pagehandler "strava/web/routes/pageHandler"
-	posthandler "strava/web/routes/postHandler"
-	serversideeventhandler "strava/web/routes/serverSideEventHandler"
 )
 
 //go:embed public/**
@@ -41,7 +41,7 @@ func RunWeb() {
 		fmt.Printf("response: %v\n", response)
 	})
 
-	fmt.Println(">>>>>>> OClient started at:", port)
+	fmt.Println("Welcom to the fitnessApp \n if you downloaded your data you can use the folow link 'http://localhost:8000/' \n if you like download your data from strava you can use this link 'http://localhost:8080/init' \n if you have some issues you can send me a email to putzmaximilian@gmail.com")
 
 	log.Fatal(http.ListenAndServe(":"+port, nil))
 }

@@ -3,11 +3,11 @@ package posthandler
 import (
 	"bytes"
 	"encoding/json"
+	"fitnessApp/key"
+	"fitnessApp/structs"
 	"fmt"
 	"net/http"
 	"net/url"
-	"strava/key"
-	"strava/structs"
 )
 
 func GetSessionKey(w http.ResponseWriter, r *http.Request) structs.Response {
@@ -31,8 +31,8 @@ func GetSessionKey(w http.ResponseWriter, r *http.Request) structs.Response {
 	form.Add("grant_type", "authorization_code")
 	form.Add("Content-Type", "application/x-www-form-urlencoded")
 
-	stravaUrl := "https://www.strava.com/oauth/token"
-	req, _ := http.NewRequest("POST", stravaUrl, bytes.NewBufferString(form.Encode()))
+	fitnessAppUrl := "https://www.strava.com/oauth/token"
+	req, _ := http.NewRequest("POST", fitnessAppUrl, bytes.NewBufferString(form.Encode()))
 
 	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 

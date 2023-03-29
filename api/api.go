@@ -2,21 +2,21 @@ package api
 
 import (
 	"encoding/json"
+	"fitnessApp/key"
+	"fitnessApp/structs"
 	"fmt"
 	"io/ioutil"
 	"net/http"
-	"strava/key"
-	"strava/structs"
 	"strconv"
 )
 
-const stravaAPIUrl = "https://www.strava.com/api/v3"
+const fitnessAppAPIUrl = "https://www.strava.com/api/v3"
 
 func GetWorkoutData(id int) structs.WorkoutData {
-	stravaUrl := stravaAPIUrl + "/activities/" + strconv.Itoa(id) + "/streams?keys=latlng,watts,heartrate,time,velocity_smooth&resolution=low&key_by_type=true"
-	fmt.Printf("stravaUrl: %v\n", stravaUrl)
+	fitnessAppUrl := fitnessAppAPIUrl + "/activities/" + strconv.Itoa(id) + "/streams?keys=latlng,watts,heartrate,time,velocity_smooth&resolution=low&key_by_type=true"
+	fmt.Printf("fitnessAppUrl: %v\n", fitnessAppUrl)
 
-	req, _ := http.NewRequest("GET", stravaUrl, nil)
+	req, _ := http.NewRequest("GET", fitnessAppUrl, nil)
 
 	req.Header = http.Header{
 		"Content-Type":  {"application/json"},

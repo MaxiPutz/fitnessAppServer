@@ -1,8 +1,6 @@
 package main
 
-import (
-	"strava/web"
-)
+import "fitnessApp/web"
 
 func main() {
 
