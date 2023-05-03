@@ -1,6 +1,6 @@
 # fitnessAppServer
 
-## What does this fittness app do.
+## What does this fitness app do.
 Here i have explaned what you are abele to to with the fitness app. <br>
 https://github.com/MaxiPutz/MaxiPutz.github.io <br>
 ## Demo 
