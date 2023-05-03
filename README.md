@@ -10,9 +10,9 @@ Okay first of all here is how i get the data. I am useing for that the strava AP
 
 Here are the steps you have to do. <br>
 1. Follow the instruction in this tutorial https://developers.strava.com/docs/getting-started/ until you have access to your clientID and clientSecret (next screenshot) <br>
-<img width="936" alt="image" src="https://user-images.githubusercontent.com/48091139/228658601-c5b478af-23bb-4f3b-9f9b-31d22b0b5a4e.png">
+![image](https://user-images.githubusercontent.com/48091139/228658601-c5b478af-23bb-4f3b-9f9b-31d22b0b5a4e.png)
 2. Open your terminal and start the programm this projects build folder. (I have writte the server for Windows, Linux, and Mac) <br>
-3. Go to the page http://localhost:8000/init <br>
+3. Go to the page http://localhost:8000/init  
 ![image](https://user-images.githubusercontent.com/48091139/228664823-f2b72e7b-26b4-440b-baa6-d097247f998b.jpeg)
 4. Copy the ClientID from strava into the ClientID textfield and press the button "GO TO THE FITNESS LOGIN"<br>
 6. Press Authorize
@@ -24,7 +24,6 @@ Here are the steps you have to do. <br>
 9. You get a table wich data you downlad and if it finished you can click the button.
 ![Screenshot 2023-03-29 at 22 50 26](https://user-images.githubusercontent.com/48091139/228664322-5c534118-544c-4d8a-8119-3b795124fa71.jpg)
 Vola you can use my fitness app
-![Screenshot 2023-03-29 at 22 50 26](https://user-images.githubusercontent.com/48091139/228664529-72219d09-f815-47a8-a141-af4ebc8e64b4.jpg)
-
+![Screenshot 2023-03-29 at 20 46 23](https://user-images.githubusercontent.com/48091139/228637792-45201524-15bf-450a-9740-7a274dcdc662.jpg)
 
 
