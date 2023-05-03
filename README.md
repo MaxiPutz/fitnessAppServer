@@ -1,11 +1,13 @@
 # fitnessAppServer
 
-#### What does this fittness app do.
+## What does this fittness app do.
 Here i have explaned what you are abele to to with the fitness app. <br>
 https://github.com/MaxiPutz/MaxiPutz.github.io <br>
+## Demo 
 if you like test the demo app you can klick here <br> 
 https://maxiputz.github.io <br>
 
+## Installation
 Okay first of all here is how i get the data. I am useing for that the strava API. The server hase access to your starva data and will download the letest workout in a CSV fromat which can handel the react app. <br>
 
 Here are the steps you have to do. <br>
@@ -23,6 +25,7 @@ Here are the steps you have to do. <br>
 ![image](https://user-images.githubusercontent.com/48091139/228663557-e1714e58-c855-4074-8d7f-de6930a09777.png)
 9. You get a table wich data you downlad and if it finished you can click the button.
 ![Screenshot 2023-03-29 at 22 50 26](https://user-images.githubusercontent.com/48091139/228664322-5c534118-544c-4d8a-8119-3b795124fa71.jpg)
+## Ready to use
 Vola you can use my fitness app
 ![Screenshot 2023-03-29 at 20 46 23](https://user-images.githubusercontent.com/48091139/228637792-45201524-15bf-450a-9740-7a274dcdc662.jpg)
 
